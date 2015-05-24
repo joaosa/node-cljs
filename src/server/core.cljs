@@ -3,15 +3,18 @@
 
 (node/enable-util-print!)
 
-(def express (node/require "express"))
+(def hapi (node/require "hapi"))
 
 (defn say-hello! [req res]
   (.send res "Hello world!"))
 
 (defn -main []
-  (let [app (express)]
-    (.get app "/" say-hello!)
-    (.listen app 3000 (fn []
-                        (println "Server started on port 3000")))))
+  (let [Server (.-Server hapi)
+        server (Server.)
+        ]
+    (.connection server (js-obj "port" 3000))
+    (.route server (js-obj "method" "GET" "path" "/" "handler" (fn [request reply] (reply "Hello, World!"))))
+    (.start server (fn []
+                     (println "Server started on port 3000")))))
 
 (set! *main-cli-fn* -main)

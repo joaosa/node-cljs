@@ -6,7 +6,7 @@
                  [org.clojure/clojurescript "0.0-2725"]]
 
   :node-dependencies [[source-map-support "0.2.8"]
-                      [express "4.12.4"]]
+                      [hapi "8.*"]]
 
   :plugins [[lein-cljsbuild "1.0.4"]
             [lein-npm "0.4.0"]]
