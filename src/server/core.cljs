@@ -5,15 +5,15 @@
 
 (def hapi (node/require "hapi"))
 
-(defn say-hello! [req res]
-  (.send res "Hello world!"))
+(defn say-hello! [request reply]
+  (reply "Hello, world!"))
 
 (defn -main []
   (let [Server (.-Server hapi)
         server (Server.)
         ]
     (.connection server (js-obj "port" 3000))
-    (.route server (js-obj "method" "GET" "path" "/" "handler" (fn [request reply] (reply "Hello, World!"))))
+    (.route server (js-obj "method" "GET" "path" "/" "handler" say-hello!))
     (.start server (fn []
                      (println "Server started on port 3000")))))
 
