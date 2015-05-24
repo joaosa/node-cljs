@@ -21,7 +21,7 @@ To avoid compiling ClojureScript for each build, AOT Clojurescript locally in yo
 
 Subsequent dev builds can use:
 
-    lein cljsbuild auto dev
+    lein cljsbuild auto server
 
 To start a Node REPL (requires rlwrap):
 
